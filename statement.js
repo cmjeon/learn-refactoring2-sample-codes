@@ -9,7 +9,7 @@ function statement(invoices, plays) {
   const format = new Intl.NumberFormat("en-US", {style: "currency", currency: "USD", minimumFractionDigits: 2}).format;
 
   for (let perf of invoices.performances) {
-    let thisAmount = amountFor(perf, playFor(perf));
+    let thisAmount = amountFor(perf);
 
     // 포인트를 적립한다
     volumeCredits += Math.max(perf.audience - 30, 0);
@@ -25,7 +25,7 @@ function statement(invoices, plays) {
   return result;
 }
 
-function amountFor(aPerformance, play) {
+function amountFor(aPerformance) {
   let result = 0;
   switch(playFor(aPerformance).type) {
     case "tragedy": // 비극
