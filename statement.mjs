@@ -1,7 +1,8 @@
 import createStatementData from './createStatementData.mjs';
 
-import plays from './plays.json';
-import invoices from './invoices.json';
+import fs from 'fs';
+const plays = JSON.parse(fs.readFileSync('./plays.json', 'utf8'));
+const invoices = JSON.parse(fs.readFileSync('./invoices.json', 'utf8'));
 
 function htmlStatement(invoices, plays) {
   return renderHtml(createStatementData(invoices, plays));
